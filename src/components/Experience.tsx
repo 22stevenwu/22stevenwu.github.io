@@ -22,7 +22,7 @@ const projects = [
       QA Intern @ <span className="text-[#D61B3E] font-medium">Ricoh USA</span>
     </>,
     description: "Automated regression testing for Ricoh’s Delivery CTRL Service, boosting efficiency for a global leader in digital services",
-    tags: ["JavaScript", "Python", "RESTful API", "Apache JMeter", "Postman"],
+    tags: ["JavaScript", "Python", "REST API", "Apache JMeter", "Postman"],
     date: "Jul 2024 - Aug 2024",
     location: "Parsippany, NJ",
     url: "https://www.ricoh-usa.com/en",
@@ -33,7 +33,7 @@ const projects = [
     <>
       Technology Consultant @ <span className="text-[#BDA06A] font-medium">BC</span>
     </>,
-    description: "Provide hardware and software support to 100+ BC faculty members and staff",
+    description: "Provide hardware and software support to 100+ faculty members and staff at BC's School of Social Work",
     tags: ["Customer IT Support", "Problem Solving", "Troubleshooting"],
     date: "Aug 2023 - Present",
     location: "Chestnut Hill, MA",
@@ -43,7 +43,7 @@ const projects = [
     key: "portfolio",
     title: "Portfolio Website",
     description: "Personal portfolio website built with React, TypeScript, and Tailwind, showcasing projects and work experience",
-    tags: ["React", "TypeScript", "Tailwind"],
+    tags: ["React", "TypeScript", "Tailwind", "Radix UI"],
     date: "Last Updated Oct 2025",
     url: "https://github.com/22stevenwu/portfolio",
   },
@@ -52,8 +52,8 @@ const projects = [
     title: <>
         <span className="text-[#388E3C] font-medium">GreenUp!</span>
     </>,
-    description: "A unique dining experience with a focus on sustainability and local ingredients",
-    tags: ["Django", "Figma", "Animation"],
+    description: "App that gamifies BC's sustainability initiatives, enabling students to track actions, earn points, and compete on leaderboards",
+    tags: ["Django", "Figma", "PostgreSQL", "Bootstrap", "Google OAuth"],
     date: "Dec 2024 - Jan 2025",
     url: "https://github.com/22stevenwu/GreenUp",
   },
@@ -62,8 +62,8 @@ const projects = [
      title: <>
         <span className="text-[#FFD700] font-medium">FairShare</span>
     </>,
-    description: "Minimalistic website showcasing creative work with smooth animations",
-    tags: ["React", "Design", "Animation"],
+    description: "Full-stack web app for bill creation and real-time splitting calculations for multiple participants",
+    tags: ["Django", "Figma", "GoogleOAuth"],
     date: "Sep 2024 - Dec 2024",
     url: "https://github.com/22stevenwu/FairShare",
   },
