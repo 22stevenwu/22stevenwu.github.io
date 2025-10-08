@@ -4,6 +4,19 @@ const GlobalBackground: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
   const rafRef = useRef<number | null>(null);
   const latest = useRef({ x: 50, y: 50 });
+  const [isDark, setIsDark] = useState(false);
+
+    useEffect(() => {
+    const root = document.documentElement;
+    const update = () => setIsDark(root.classList.contains('dark'));
+    update();
+
+    // Watch for class changes so toggling the theme updates instantly
+    const obs = new MutationObserver(update);
+    obs.observe(root, { attributes: true, attributeFilter: ['class'] });
+   return () => obs.disconnect();
+  }, []);
+  
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -35,20 +48,17 @@ const GlobalBackground: React.FC = () => {
       />
 
       <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-0 opacity-40"
+        className="absolute inset-0"
         style={{
-          backgroundImage:
-            `url("data:image/svg+xml;utf8,` +
-            encodeURIComponent(`
-              <svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'>
-                <path d='M32 0H0V32' fill='none' stroke='hsl(var(--primary))' stroke-width='1'/>
-              </svg>
-            `) +
-            `")`,
-          backgroundSize: '32px 32px',
+            background: `radial-gradient(
+            circle at ${mousePosition.x}% ${mousePosition.y}%,
+            ${isDark ? 'rgba(255,255,255,0.14)' : 'rgba(0,0,0,0.08)'} 0%,
+            transparent 52%
+            )`,
+            mixBlendMode: isDark ? 'screen' as const : 'normal' as const,
+            transition: 'background 0.18s ease-out'
         }}
-      />
+        />
 
       <div className="absolute top-20 right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none" />

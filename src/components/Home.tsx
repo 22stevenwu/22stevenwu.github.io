@@ -91,7 +91,7 @@ const Hero = () => {
         <div className="inline-block">
           <div className="w-16 h-1 bg-primary mx-auto mb-8 rounded-full"></div>
         </div>
-        <h1 className="text-5xl md:text-7xl font-semibold tracking-tight text-foreground transition-all duration-300">
+        <h1 className="text-5xl md:text-7xl font-semibold tracking-tight text-foreground transition-transform duration-300 hover:-translate-y-2">
           Steven Wu
         </h1>
         <p className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed">
@@ -124,13 +124,13 @@ const Hero = () => {
           </Button>
         </div>
         <div className="flex gap-4 justify-center pt-4">
-         <a href="https://github.com/22stevenwu" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">
+         <a href="https://github.com/22stevenwu" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
           <Github className="h-5 w-5" />
          </a>
-         <a href="https://www.linkedin.com/in/stevenwu-/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground">
+         <a href="https://www.linkedin.com/in/stevenwu-/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
           <Linkedin className="h-5 w-5" />
          </a>
-         <a href="https://drive.google.com/file/d/1OnoY7UYerBEjsOr8SX4oF0W72tgtrwPF/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground" aria-label="Resume">
+         <a href="https://drive.google.com/file/d/1OnoY7UYerBEjsOr8SX4oF0W72tgtrwPF/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-all duration-300 hover:shadow-xl hover:-translate-y-2" aria-label="Resume">
           <FileText className="h-5 w-5" />
          </a>
          </div>

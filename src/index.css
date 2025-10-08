@@ -102,4 +102,8 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+
+  .dark body {
+    background: radial-gradient(circle, #000000, #1a1a1a, #000000);
+  }
 }

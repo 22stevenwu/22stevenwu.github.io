@@ -104,7 +104,7 @@ const Navbar: React.FC = () => {
   return (
     <header ref={headerRef} className="sticky top-0 w-full z-50 bg-background/60 backdrop-blur-sm border-b border-border/50">
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
-        <a href="#" className="text-xl text-primary font-bold text-foreground">Steven Wu</a>
+        <a href="#" className="text-xl text-primary font-medium text-foreground italic">Steven Wu</a>
 
         {/* Hamburger (visible on all sizes) */}
         <div className="flex items-center gap-2">

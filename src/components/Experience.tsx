@@ -63,7 +63,7 @@ const projects = [
         <span className="text-[#FFD700] font-medium">FairShare</span>
     </>,
     description: "Full-stack web app for bill creation and real-time splitting calculations for multiple participants",
-    tags: ["Django", "Figma", "GoogleOAuth"],
+    tags: ["Django", "Figma", "GoogleOAuth", "Bootstrap"],
     date: "Sep 2024 - Dec 2024",
     url: "https://github.com/22stevenwu/FairShare",
   },
