@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.2640ce90.css",
-    "main.js": "/static/js/main.eb048d10.js",
+    "main.js": "/static/js/main.2eca194f.js",
     "static/js/453.9b410709.chunk.js": "/static/js/453.9b410709.chunk.js",
     "static/media/largerthanlife.jpeg": "/static/media/largerthanlife.2cb33388a7898fec782e.jpeg",
     "static/media/busyhead.jpeg": "/static/media/busyhead.b961d79e8a880f68fb8e.jpeg",
@@ -15,11 +15,11 @@
     "static/media/purgatory.jpeg": "/static/media/purgatory.1d8086d110a38a00a2ed.jpeg",
     "index.html": "/index.html",
     "main.2640ce90.css.map": "/static/css/main.2640ce90.css.map",
-    "main.eb048d10.js.map": "/static/js/main.eb048d10.js.map",
+    "main.2eca194f.js.map": "/static/js/main.2eca194f.js.map",
     "453.9b410709.chunk.js.map": "/static/js/453.9b410709.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2640ce90.css",
-    "static/js/main.eb048d10.js"
+    "static/js/main.2eca194f.js"
   ]
 }
