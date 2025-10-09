@@ -67,11 +67,11 @@ const Navbar: React.FC = () => {
 
   type Theme = 'light' | 'dark';
   const [theme, setTheme] = useState<Theme>(() => {
-    // initial theme from localStorage or system preference (no SSR here)
+    // initial theme from localStorage or default to light mode
     const stored = typeof window !== 'undefined' ? localStorage.getItem('theme') as Theme | null : null;
     if (stored === 'light' || stored === 'dark') return stored;
-    const prefersDark = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    return prefersDark ? 'dark' : 'light';
+    // Default to light mode instead of following system preference
+    return 'light';
   });
   const applyTheme = (t: Theme) => {
     const root = document.documentElement;
