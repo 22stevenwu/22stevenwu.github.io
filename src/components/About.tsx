@@ -29,12 +29,6 @@ const tracks = [
   { name: "Superpowers", artist: "Daniel Caesar", album: "NEVER ENOUGH", albumArt: neverenough },
 ];
 
-const skills = [
-  { icon: Code2, label: "Frontend", tech: "React, TypeScript, Tailwind" },
-  { icon: Zap, label: "Backend", tech: "Node.js, PostgreSQL, APIs" },
-  { icon: Palette, label: "Design", tech: "Figma, UI/UX, Animation" },
-];
-
 export const About = () => {
   const [currentIndex, setCurrentIndex] = useState(() => Math.floor(Math.random() * tracks.length));
   const [animState, setAnimState] = useState<'idle' | 'fadeOut' | 'fadeIn'>('idle');
@@ -167,15 +161,20 @@ export const About = () => {
         <Card className="md:col-span-2 p-6 h-full bg-card border-border/50 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-medium)] hover:-translate-y-2 transition-all duration-300">
           <h2 className="text-3xl font-bold mb-5">Skills</h2>
             <div className="flex flex-wrap justify-center gap-2 md:justify-start">
-              <Badge variant="secondary" className="text-md">React</Badge>
+              <Badge variant="secondary" className="text-md">Python</Badge>
               <Badge variant="secondary" className="text-md">TypeScript</Badge>
               <Badge variant="secondary" className="text-md">JavaScript</Badge>
-              <Badge variant="secondary" className="text-md">Python</Badge>
+              <Badge variant="secondary" className="text-md">Java</Badge>
+              <Badge variant="secondary" className="text-md">React</Badge>
+              <Badge variant="secondary" className="text-md">Node.js</Badge>
               <Badge variant="secondary" className="text-md">HTML</Badge>
               <Badge variant="secondary" className="text-md">CSS</Badge>
               <Badge variant="secondary" className="text-md">UI/UX</Badge>
               <Badge variant="secondary" className="text-md">Git</Badge>
               <Badge variant="secondary" className="text-md">Jira</Badge>
+              <Badge variant="secondary" className="text-md">Agile</Badge>
+              <Badge variant="secondary" className="text-md">Playwright</Badge>
+              <Badge variant="secondary" className="text-md">Figma</Badge>
             </div>
         </Card>
       </div>
