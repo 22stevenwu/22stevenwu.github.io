@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3fd7c31f.css",
+    "main.js": "/static/js/main.cf3824d6.js",
+    "static/js/453.9b410709.chunk.js": "/static/js/453.9b410709.chunk.js",
+    "static/media/largerthanlife.jpeg": "/static/media/largerthanlife.2cb33388a7898fec782e.jpeg",
+    "static/media/busyhead.jpeg": "/static/media/busyhead.b961d79e8a880f68fb8e.jpeg",
+    "static/media/takecare.jpeg": "/static/media/takecare.01d2b488287df756875a.jpeg",
+    "static/media/letsstarthere.jpeg": "/static/media/letsstarthere.cb7e18560463dc4e9d74.jpeg",
+    "static/media/views.jpeg": "/static/media/views.954d7ae15b4c79c0458b.jpeg",
+    "static/media/lovemenot.jpeg": "/static/media/lovemenot.98300600cb5c444259b0.jpeg",
+    "static/media/headshot.jpg": "/static/media/headshot.751bb9ae3b8b3183c008.jpg",
+    "static/media/neverenough.jpeg": "/static/media/neverenough.569cb589aa5baf9b48ef.jpeg",
+    "static/media/honestlynevermind.jpeg": "/static/media/honestlynevermind.ee81f5dfc152162346c4.jpeg",
+    "static/media/purgatory.jpeg": "/static/media/purgatory.1d8086d110a38a00a2ed.jpeg",
+    "index.html": "/index.html",
+    "main.3fd7c31f.css.map": "/static/css/main.3fd7c31f.css.map",
+    "main.cf3824d6.js.map": "/static/js/main.cf3824d6.js.map",
+    "453.9b410709.chunk.js.map": "/static/js/453.9b410709.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3fd7c31f.css",
+    "static/js/main.cf3824d6.js"
+  ]
+}
