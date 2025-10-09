@@ -5,7 +5,7 @@ const NavLink: React.FC<{ href: string; children: React.ReactNode; onClick?: () 
   <a
     href={href}
     onClick={onClick}
-    className="block px-4 py-2 text-foreground hover:text-primary transition-colors"
+    className="block px-4 py-2 text-foreground hover:text-primary transition-colors text-center"
   >
     {children}
   </a>
@@ -140,7 +140,7 @@ const Navbar: React.FC = () => {
           className={`origin-top-right absolute top-full left-0 right-0 bg-background/90 backdrop-blur-sm border-t border-border/50 z-40 transform transition-all duration-200 ${open ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}
         >
           <nav className="px-4 pb-6 pt-2">
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col items-center gap-1">
               <NavLink href="#" onClick={close}>Home</NavLink>
               <NavLink href="#about" onClick={close}>About</NavLink>
               <NavLink href="#projects" onClick={close}>Projects</NavLink>

@@ -65,7 +65,7 @@ export const About = () => {
   }, []);
 
   return (
-    <section id="about" className="min-h-screen flex items-center px-6 py-24">
+    <section id="about" className="min-h-screen flex items-center px-6 py-24 text-center md:text-left">
       <div className="max-w-6xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Profile */}
         <Card className="md:col-span-2 p-8 h-full bg-card shadow-[var(--shadow-medium)] hover:shadow-[var(--shadow-soft)] hover:-translate-y-2 transition-all duration-300 border-border/50">
@@ -166,7 +166,7 @@ export const About = () => {
         {/* Skills */}
         <Card className="md:col-span-2 p-6 h-full bg-card border-border/50 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-medium)] hover:-translate-y-2 transition-all duration-300">
           <h2 className="text-3xl font-bold mb-5">Skills</h2>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap justify-center gap-2 md:justify-start">
               <Badge variant="secondary" className="text-md">React</Badge>
               <Badge variant="secondary" className="text-md">TypeScript</Badge>
               <Badge variant="secondary" className="text-md">JavaScript</Badge>

@@ -71,7 +71,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="min-h-screen flex items-center px-6 py-24">
+    <section id="projects" className="min-h-screen flex items-center px-6 py-24 text-center md:text-left">
       <div className="max-w-6xl mx-auto w-full">
         <h2 className="text-4xl md:text-5xl font-semi-bold mb-12 text-foreground">Work & Project Experience</h2>
         <div className="flex flex-wrap justify-center gap-6">
@@ -88,10 +88,10 @@ const Projects = () => {
                     <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
                   </a>
                 </div>
-                <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                <CardTitle className="text-xl group-hover:text-primary transition-colors text-center md:text-left">
                   {project.title}
                 </CardTitle>
-                <div className="flex justify-center mt-2">
+                <div className="flex justify-center md:justify-start mt-2">
                     {project.location && (
                     <Badge variant="secondary" className="text-xs">
                         {project.location}
@@ -101,10 +101,10 @@ const Projects = () => {
                         {project.date}
                     </Badge>
                 </div>
-                <CardDescription className="leading-relaxed">{project.description}</CardDescription>
+                <CardDescription className="leading-relaxed text-center md:text-left">{project.description}</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="flex flex-wrap justify-center gap-2">
+                <div className="flex flex-wrap justify-center md:justify-start gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
