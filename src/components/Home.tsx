@@ -102,8 +102,10 @@ const Hero = () => {
           | <span className="text-xl md:text-2xl text-muted-foreground font-light max-w-2xl mx-auto leading-relaxed">{rolesTW.text}</span>
           <Caret active={rolesTW.deleting} />
           {" "}
+          <br></br>
+          Software Engineering Intern @ <span className="font-medium text-[#FB8218]">SunFire</span>
         </p>
-        <p>Software Engineering Intern @ <span className="font-medium text-[#FB8218]">SunFire</span></p>
+        
         <div className="flex gap-4 justify-center pt-4">
           <Button 
             onClick={scrollToProjects}
