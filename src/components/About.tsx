@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-import { Music2, ExternalLink, SkipForward, Code2, Palette, Zap } from "lucide-react";
+import { Music2, SkipForward } from "lucide-react";
 import headshot from "../assets/headshot.jpg"; 
 // PageBackground removed in favor of a single GlobalBackground
 import jerseyGiant from "../assets/jerseygiant.jpeg";
@@ -124,11 +124,6 @@ export const About = () => {
                   alt={currentTrack.album}
                   className={"w-full h-full object-cover transition-transform duration-500 " + (animState === 'fadeOut' ? 'scale-95' : 'group-hover:scale-105')}
                 />
-                {isPlaying && (
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <ExternalLink className="h-8 w-8 text-white" />
-                  </div>
-                )}
               </div>
             </div>
 
