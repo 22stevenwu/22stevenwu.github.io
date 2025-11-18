@@ -15,15 +15,6 @@ const projects = [
     url: "https://www.sunfireinc.com/",
   },
   {
-    key: "ricoh",
-    title: "Quality Assurance Intern @ Ricoh USA",
-    description: "Ricoh is a global leader in digital services, workplace technology, and intelligent automation. As a QA Intern, I helped improve the reliability and performance of Ricoh’s Delivery CTRL Service by automating regression testing, evaluating API scalability with Apache JMeter and Postman, and building GET endpoints using Python and JavaScript. I also reduced manual QA workload by 15 hours per month through LeapWork automation and created detailed system design documentation used across engineering and QA teams.",
-    tags: ["JavaScript", "Python", "REST API", "Apache JMeter", "Postman"],
-    date: "July 2024 - August 2024",
-    location: "Parsippany, NJ",
-    url: "https://www.ricoh-usa.com/en",
-  },
-  {
     key: "bc",
     title: "Technology Consultant @ Boston College",
     description: "BC EagleTech is Boston College’s primary technical support organization, delivering hardware, software, and network services to faculty, staff, and students across campus. As a Technology Consultant for the School of Social Work, I support 100+ faculty and staff by diagnosing system configuration issues, resolving software problems, and maintaining device reliability. I also help monitor a database of over 10,000 digital service tickets to detect anomalies and security risks, and assemble and configure hardware tailored to individual users’ needs.",
@@ -31,6 +22,15 @@ const projects = [
     date: "August 2023 - Present",
     location: "Chestnut Hill, MA",
     url: "https://www.bc.edu/content/bc-web/offices/its/about/student-staff.html",
+  },
+  {
+    key: "ricoh",
+    title: "Quality Assurance Intern @ Ricoh USA",
+    description: "Ricoh is a global leader in digital services, workplace technology, and intelligent automation. As a QA Intern, I helped improve the reliability and performance of Ricoh’s Delivery CTRL Service by automating regression testing, evaluating API scalability with Apache JMeter and Postman, and building GET endpoints using Python and JavaScript. I also reduced manual QA workload by 15 hours per month through LeapWork automation and created detailed system design documentation used across engineering and QA teams.",
+    tags: ["JavaScript", "Python", "REST API", "Apache JMeter", "Postman"],
+    date: "July 2024 - August 2024",
+    location: "Parsippany, NJ",
+    url: "https://www.ricoh-usa.com/en",
   },
 ];
 
