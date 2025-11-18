@@ -98,7 +98,7 @@ const Contact = () => {
           >
             <div className="w-full px-6 flex items-center justify-between">
               <div className="flex-1">
-                <p className="text-left">Created by Steven Wu · Last updated Oct 2025</p>
+                <p className="text-left">Created by Steven Wu · Last updated Nov 2025</p>
               </div>
               <div className="flex items-center gap-4">
                 <a href="https://github.com/22stevenwu" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground" aria-label="GitHub">

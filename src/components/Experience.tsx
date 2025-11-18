@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
@@ -5,11 +7,8 @@ import { Badge } from "./ui/badge";
 const projects = [
   {
     key: "sunfire",
-    title:
-    <>
-      SWE Intern @ <span className="text-[#FB8218] font-medium">SunFire</span>
-    </>,
-    description: "Support SunFire's core platforms (TRANZACT, Apollo), streamlining Medicare plan quoting & enrollment for agents and consumers",
+    title: "Software Engineering Intern @ SunFire",
+    description: "SunFire is a leading, mission-driven healthcare technology company delivering digital solutions that streamline Medicare plan quoting and enrollment for agents and consumers. As a Software Engineering Intern, I contributed to the development and enhancement of SunFire's core platforms, TRANZACT and Apollo, building and refining React/TypeScript components and supporting workflows that help seniors navigate complex Medicare options. I also led the migration of the end-to-end testing suite from Cypress to Playwright, reducing test flakiness, improving execution speed, and establishing more scalable testing patterns for engineering and QA teams.",
     tags: ["React", "TypeScript", "Node.js", "Playwright", "Agile"],
     date: "May 2025 – Present",
     location: "Remote",
@@ -17,107 +16,150 @@ const projects = [
   },
   {
     key: "ricoh",
-    title: 
-    <>
-      QA Intern @ <span className="text-[#D61B3E] font-medium">Ricoh USA</span>
-    </>,
-    description: "Automated regression testing for Ricoh’s Delivery CTRL Service, boosting efficiency for a global leader in digital services",
+    title: "Quality Assurance Intern @ Ricoh USA",
+    description: "Ricoh is a global leader in digital services, workplace technology, and intelligent automation. As a QA Intern, I helped improve the reliability and performance of Ricoh’s Delivery CTRL Service by automating regression testing, evaluating API scalability with Apache JMeter and Postman, and building GET endpoints using Python and JavaScript. I also reduced manual QA workload by 15 hours per month through LeapWork automation and created detailed system design documentation used across engineering and QA teams.",
     tags: ["JavaScript", "Python", "REST API", "Apache JMeter", "Postman"],
-    date: "Jul 2024 - Aug 2024",
+    date: "July 2024 - August 2024",
     location: "Parsippany, NJ",
     url: "https://www.ricoh-usa.com/en",
   },
   {
     key: "bc",
-    title: 
-    <>
-      Technology Consultant @ <span className="text-[#BDA06A] font-medium">BC</span>
-    </>,
-    description: "Provide hardware and software support to 100+ faculty members and staff at BC's School of Social Work",
+    title: "Technology Consultant @ Boston College",
+    description: "BC EagleTech is Boston College’s primary technical support organization, delivering hardware, software, and network services to faculty, staff, and students across campus. As a Technology Consultant for the School of Social Work, I support 100+ faculty and staff by diagnosing system configuration issues, resolving software problems, and maintaining device reliability. I also help monitor a database of over 10,000 digital service tickets to detect anomalies and security risks, and assemble and configure hardware tailored to individual users’ needs.",
     tags: ["Customer IT Support", "Problem Solving", "Troubleshooting"],
-    date: "Aug 2023 - Present",
+    date: "August 2023 - Present",
     location: "Chestnut Hill, MA",
-    url: "https://www.bc.edu/content/bc-web/offices/its/about/ocio.html",
-  },
-  {
-    key: "portfolio",
-    title: "Portfolio Website",
-    description: "Personal portfolio website built with React, TypeScript, and Tailwind, showcasing projects and work experience",
-    tags: ["React", "TypeScript", "Tailwind", "Radix UI"],
-    date: "Last Updated Oct 2025",
-    url: "https://github.com/22stevenwu/portfolio",
-  },
-  {
-    key: "greenup",
-    title: <>
-        <span className="text-[#388E3C] font-medium">GreenUp!</span>
-    </>,
-    description: "App that gamifies BC's sustainability initiatives, enabling students to track actions, earn points, and compete on leaderboards",
-    tags: ["Django", "Figma", "PostgreSQL", "Bootstrap", "Google OAuth"],
-    date: "Dec 2024 - Jan 2025",
-    url: "https://github.com/22stevenwu/GreenUp",
-  },
-  {
-    key: "fairshare",
-     title: <>
-        <span className="text-[#FFD700] font-medium">FairShare</span>
-    </>,
-    description: "Full-stack web app for bill creation and real-time splitting calculations for multiple participants",
-    tags: ["Django", "Figma", "GoogleOAuth", "Bootstrap"],
-    date: "Sep 2024 - Dec 2024",
-    url: "https://github.com/22stevenwu/FairShare",
+    url: "https://www.bc.edu/content/bc-web/offices/its/about/student-staff.html",
   },
 ];
 
 const Projects = () => {
-  return (
-    <section id="projects" className="min-h-screen flex items-center px-6 py-24 text-center md:text-left">
-      <div className="max-w-6xl mx-auto w-full">
-        <h2 className="text-4xl md:text-5xl font-semi-bold mb-12 text-foreground">Work & Project Experience</h2>
-        <div className="flex flex-wrap justify-center gap-6">
-          {projects.map((project, index) => (
-            <Card
-              key={project.key}
-              className="group cursor-pointer hover:border-primary transition-all duration-300 hover:shadow-xl hover:-translate-y-2 w-[320px] md:w-[360px]"
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              <CardHeader>
-                <div className="flex items-center justify-between mb-2">
-                  <div className="w-8 h-1 bg-primary rounded-full group-hover:w-12 transition-all duration-300"></div>
-                  <a href={project.url} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
-                  </a>
-                </div>
-                <CardTitle className="text-xl group-hover:text-primary transition-colors text-center md:text-left">
-                  {project.title}
-                </CardTitle>
-                <div className="flex justify-center md:justify-start mt-2">
-                    {project.location && (
-                    <Badge variant="secondary" className="text-xs">
-                        {project.location}
-                    </Badge>)}
+  const [activeKey, setActiveKey] = useState(projects[0].key);
+  const activeProject = projects.find((project) => project.key === activeKey)!;
 
-                    <Badge variant="secondary" className="text-xs">
-                        {project.date}
-                    </Badge>
+  return (
+    <section
+      id="projects"
+      className="min-h-screen flex items-center py-24"
+    >
+      <div className="w-full px-6 md:px-12 lg:px-24">
+        <h2 className="text-4xl md:text-5xl font-semi-bold mb-4 text-foreground text-center md:text-left">
+          Work Experience
+        </h2>
+        <p className="mb-8 text-muted-foreground max-w-2xl text-center md:text-left">
+          Click between roles to learn more about my experiences and contributions.
+        </p>
+
+        <Card className="w-full group relative overflow-hidden min-h-[400px]">
+          <div className="flex flex-col md:flex-row">
+            {/* Sidebar inside card */}
+            <div className="md:w-1/3 border-b md:border-b-0 md:border-r border-border bg-muted/40 min-h-[400px]">
+              <div className="flex md:flex-col gap-4 overflow-x-auto md:overflow-visible p-4">
+                {/* Work Section */}
+                <div className="min-w-[200px] md:min-w-0">
+                  <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1 px-1">
+                    Work
+                  </h3>
+                  <div className="flex md:flex-col gap-2">
+                    {projects
+                      .filter((p) => ["sunfire", "ricoh", "bc"].includes(p.key))
+                      .map((project) => {
+                        const isActive = project.key === activeKey;
+                        return (
+                          <button
+                            key={project.key}
+                            type="button"
+                            onClick={() => setActiveKey(project.key)}
+                            className={`relative flex-shrink-0 rounded-md px-3 py-2 text-sm md:text-base text-left transition-all duration-200 whitespace-nowrap w-full text-foreground
+                              ${isActive ? "bg-background" : "hover:bg-muted"}
+                            `}
+                          >
+                            <div
+                              className={`absolute left-0 top-0 h-full w-1 rounded-r-md transition-all duration-200
+                                ${isActive ? "bg-primary" : "bg-transparent"}
+                              `}
+                            />
+                            <span className="font-medium block">
+                              {project.title}
+                            </span>
+                            {project.location && (
+                              <span className="text-xs opacity-75">
+                                {project.date}
+                              </span>
+                            )}
+                          </button>
+                        );
+                      })}
+                  </div>
                 </div>
-                <CardDescription className="leading-relaxed text-center md:text-left">{project.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex flex-wrap justify-center md:justify-start gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-3 py-1 text-xs bg-secondary text-secondary-foreground rounded-full border border-border"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                
+              </div>
+              
+            </div>
+            
+
+            {/* Detail pane */}
+            <div className="flex-1">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeKey}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.18, ease: "easeOut" }}
+                >
+                  <CardHeader className="pb-3">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="w-10 h-1 bg-primary rounded-full group-hover:w-14 transition-all duration-300" />
+                      {activeProject.url && (
+                        <a
+                          href={activeProject.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-xs text-primary/80 hover:text-primary"
+                        >
+                          View
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
+                      )}
+                    </div>
+                    <CardTitle className="text-2xl mb-2">
+                      {activeProject.title}
+                    </CardTitle>
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {activeProject.location && (
+                        <Badge variant="secondary" className="text-xs">
+                          {activeProject.location}
+                        </Badge>
+                      )}
+                      {activeProject.date && (
+                        <Badge variant="secondary" className="text-xs">
+                          {activeProject.date}
+                        </Badge>
+                      )}
+                    </div>
+                  </CardHeader>
+                  <CardContent className="pt-0 pb-4">
+                    <div className="flex flex-wrap gap-2">
+                      {activeProject.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 text-xs bg-secondary text-secondary-foreground rounded-full border border-border"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <CardDescription className="leading-relaxed mt-4">
+                      {activeProject.description}
+                    </CardDescription>
+                  </CardContent>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </Card>
       </div>
     </section>
   );

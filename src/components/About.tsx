@@ -91,8 +91,8 @@ export const About = () => {
                   with minors in Finance and Data Science. 
                 </p>
                 <p>
-                  Outside of academics, I’m an avid basketball fan, enjoy golfing (sometimes),
-                   and enjoy music of all kinds. Check out what I am currently listening to!
+                  Outside of academics, I’m an avid basketball fan, enjoy golfing,
+                   and enjoy music of all kinds. Check out some of my favorite songs right now!
                 </p>
               </div>
             </div>
