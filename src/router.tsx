@@ -7,7 +7,7 @@ export function getRouter() {
   return createTanStackRouter({
     routeTree,
     context: { queryClient },
-    // Keep route matching and generated links under the GitHub Pages project path.
+    // Keep route matching aligned with Vite's deployment base path.
     basepath: import.meta.env.BASE_URL.replace(/\/$/, "") || "/",
     defaultPreload: "intent",
     scrollRestoration: true,
