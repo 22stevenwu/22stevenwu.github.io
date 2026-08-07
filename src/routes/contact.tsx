@@ -12,7 +12,7 @@ const contacts = [
   {
     label: "Resume",
     value: "View my resume",
-    href: "https://docs.google.com/document/d/1ZwI7eCSOFQ19L0l3GwacBOSb9iuUIRXM/edit?usp=sharing&ouid=118055764107557939230&rtpof=true&sd=true",
+    href: "https://drive.google.com/file/d/1BBQLuoZ_9HQsFLDbRpA04mpk8hjJOCka/view?usp=sharing",
   },
 ];
 

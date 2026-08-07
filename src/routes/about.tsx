@@ -1,11 +1,9 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowUpRight,
   BriefcaseBusiness,
   Building2,
-  ChevronLeft,
-  ChevronRight,
   Dumbbell,
   GraduationCap,
   Headphones,
@@ -13,12 +11,12 @@ import {
   Plane,
   Trophy,
   Utensils,
-  X,
 } from "lucide-react";
 import { PageShell } from "@/components/site-nav";
 import { Reveal } from "@/components/motion";
+import { TravelMap } from "@/components/travel-map";
 import type { ExperienceEntry, ProjectEntry } from "@/data/timeline";
-import { travelPhotos, type TravelPhoto } from "@/data/travel";
+import { travelDestinations } from "@/data/travel";
 import headshot from "@/assets/steven_headshot.png";
 
 export const Route = createFileRoute("/about")({
@@ -100,173 +98,6 @@ function Bullets({ bullets }: { bullets: string[] }) {
         </li>
       ))}
     </ul>
-  );
-}
-
-function TravelGallery({ photos }: { photos: TravelPhoto[] }) {
-  const [start, setStart] = useState(0);
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  const visibleCount = Math.min(3, photos.length);
-  const canScroll = photos.length > visibleCount;
-
-  const shiftWindow = (delta: number) => {
-    setStart((current) => (current + delta + photos.length) % photos.length);
-  };
-
-  const close = () => setOpenIndex(null);
-  const showPrev = () =>
-    setOpenIndex((current) => (current === null ? null : (current - 1 + photos.length) % photos.length));
-  const showNext = () =>
-    setOpenIndex((current) => (current === null ? null : (current + 1) % photos.length));
-
-  useEffect(() => {
-    if (openIndex === null) return;
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") close();
-      if (event.key === "ArrowLeft") showPrev();
-      if (event.key === "ArrowRight") showNext();
-    };
-    window.addEventListener("keydown", onKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [openIndex]);
-
-  const active = openIndex !== null ? photos[openIndex] : null;
-  const visible = Array.from({ length: visibleCount }, (_, i) => {
-    const index = (start + i) % photos.length;
-    return { photo: photos[index], index };
-  });
-
-  return (
-    <>
-      <div className="relative">
-        <div key={start} className="gallery-strip grid grid-cols-3 gap-2 sm:gap-3">
-          {visible.map(({ photo, index }) => (
-            <button
-              key={index}
-              type="button"
-              disabled={!photo.src}
-              onClick={() => setOpenIndex(index)}
-              className={`motion-button group relative aspect-square overflow-hidden rounded-2xl border border-border bg-secondary text-left transition-[transform,box-shadow,border-color] duration-500 ease-out ${
-                photo.src ? "cursor-pointer" : "cursor-default"
-              }`}
-            >
-              {photo.src ? (
-                <>
-                  <img
-                    src={photo.src}
-                    alt={photo.place}
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/0 to-transparent opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-100">
-                    <p className="p-3 text-sm font-medium text-white">{photo.place}</p>
-                  </div>
-                </>
-              ) : (
-                <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-secondary to-muted p-3 text-center">
-                  <MapPin className="size-5 text-muted-foreground" />
-                  <p className="label-mono">{photo.place}</p>
-                </div>
-              )}
-            </button>
-          ))}
-        </div>
-
-        {canScroll ? (
-          <>
-            <button
-              type="button"
-              onClick={() => shiftWindow(-1)}
-              aria-label="Previous photos"
-              className="gallery-arrow absolute left-0 top-1/2 flex size-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-card text-muted-foreground shadow-[var(--shadow-lift)] transition-[color,background-color,transform] duration-500 ease-out hover:bg-secondary hover:text-foreground"
-            >
-              <ChevronLeft className="size-5" />
-            </button>
-            <button
-              type="button"
-              onClick={() => shiftWindow(1)}
-              aria-label="Next photos"
-              className="gallery-arrow absolute right-0 top-1/2 flex size-9 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-border bg-card text-muted-foreground shadow-[var(--shadow-lift)] transition-[color,background-color,transform] duration-500 ease-out hover:bg-secondary hover:text-foreground"
-            >
-              <ChevronRight className="size-5" />
-            </button>
-          </>
-        ) : null}
-      </div>
-
-      {canScroll ? (
-        <div className="mt-2 flex justify-center gap-1.5">
-          {photos.map((_, index) => (
-            <span
-              key={index}
-              className={`h-1.5 rounded-full transition-[width,background-color] duration-500 ease-out ${
-                index === start ? "w-4 bg-primary" : "w-1.5 bg-border"
-              }`}
-            />
-          ))}
-        </div>
-      ) : null}
-
-      {active?.src ? (
-        <div
-          className="lightbox-backdrop fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 sm:p-8"
-          onClick={close}
-        >
-          <button
-            type="button"
-            onClick={close}
-            aria-label="Close"
-            className="absolute right-4 top-4 rounded-md p-2 text-white/70 transition-colors hover:bg-white/10 hover:text-white"
-          >
-            <X className="size-6" />
-          </button>
-
-          <button
-            type="button"
-            onClick={(event) => {
-              event.stopPropagation();
-              showPrev();
-            }}
-            aria-label="Previous photo"
-            className="absolute left-2 rounded-full p-2 text-white/70 transition-colors hover:bg-white/10 hover:text-white sm:left-6"
-          >
-            <ChevronLeft className="size-7" />
-          </button>
-
-          <div
-            className="flex max-h-full max-w-3xl flex-col items-center gap-4"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <img
-              key={openIndex}
-              src={active.src}
-              alt={active.place}
-              className="lightbox-image max-h-[75vh] w-auto rounded-lg object-contain"
-            />
-            <p className="label-mono text-white/80">{active.place}</p>
-          </div>
-
-          <button
-            type="button"
-            onClick={(event) => {
-              event.stopPropagation();
-              showNext();
-            }}
-            aria-label="Next photo"
-            className="absolute right-2 rounded-full p-2 text-white/70 transition-colors hover:bg-white/10 hover:text-white sm:right-6"
-          >
-            <ChevronRight className="size-7" />
-          </button>
-        </div>
-      ) : null}
-    </>
   );
 }
 
@@ -471,22 +302,22 @@ function About() {
           </div>
 
           <div className="p-6 pb-2 sm:p-8 md:p-10 md:p-2">
-            <p className="label-mono text-primary">Hello, I&apos;m Steven</p>
+            <p className="label-mono text-primary">Hello, I'm Steven</p>
             <div className="mt-5 space-y-4 text-base leading-relaxed text-muted-foreground">
               <p>
-                I&apos;m a software engineer from the NYC metropolitan area with a background
-                spanning full-stack development, quality assurance, and data analysis.
+                I currently work as a Software Engineer I at Sunfire, where I build and maintain applications
+                supporting millions of Medicare plan enrollments each year. My work primarily involves React and TypeScript, with
+                a focus on delivering reliable, user-centered software.
               </p>
               <p>
-                I recently graduated from Boston College with a B.A. in Computer Science and minors in Finance and Data
-                Science. That mix taught me to approach technology from both a technical and
-                business perspective.
+                I started at Sunfire as a software engineering intern, collaborating
+                with cross-functional teams to ship production features and
+                improve development workflows.
               </p>
               <p>
-                Today, I work at Sunfire, a health technology company building digital tools
-                that streamline Medicare plan quoting and enrollment for agents and consumers.
-                Currently as a Software Engineer I, I am building and maintaining 
-                applications that support millions of Medicare plan enrollments each year. 
+                Before that, I graduated from Boston College with a B.A. in Computer Science and minors
+                in Finance and Data Science, shaping the way I approach technical problems
+                with business context.
               </p>
             </div>
 
@@ -515,7 +346,7 @@ function About() {
             <h2 className="text-2xl font-semibold sm:text-3xl">What keeps me moving</h2>
             <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">
               Away from work, you'll usually find me on the golf course, in the gym, or on the basketball court.
-              I'm a lifelong Knicks fan and love both playing and watching basketball. Outside of sports, I'm enjoy 
+              I'm a lifelong Knicks fan and love both playing and watching basketball. Outside of sports, I enjoy
               discovering new music, trying new foods, and traveling whenever I get the chance.
             </p>
           </div>
@@ -543,10 +374,10 @@ function About() {
             <h2 className="mt-2 text-2xl font-semibold sm:text-3xl">A few places I&apos;ve been</h2>
           </div>
           <p className="hidden max-w-100 text-right text-sm text-muted-foreground sm:block">
-            Select a photo to take a closer look.
+            Select a pin to preview photos from each place.
           </p>
         </div>
-        <TravelGallery photos={travelPhotos} />
+        <TravelMap destinations={travelDestinations} />
       </section>
       </Reveal>
 

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Moon, Sun } from "lucide-react";
+import { Moon, Search, Sun } from "lucide-react";
+import { CommandPalette } from "@/components/command-palette";
 
 const links = [
   { to: "/", label: "Home" },
@@ -52,10 +53,10 @@ function ThemeToggle() {
   );
 }
 
-export function SiteNav() {
+export function SiteNav({ onOpenCommand }: { onOpenCommand: () => void }) {
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/80 backdrop-blur">
-      <nav className="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
+      <nav className="mx-auto flex max-w-3xl items-center justify-between px-3 py-4 sm:px-6">
         <Link to="/" className="font-mono text-sm tracking-tight text-foreground">
           sw<span className="text-primary">.</span>
         </Link>
@@ -66,7 +67,7 @@ export function SiteNav() {
                 <Link
                   to={link.to}
                   activeOptions={{ exact: link.to === "/" }}
-                  className="motion-button rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-[color,background-color,transform] duration-500 ease-out hover:text-foreground"
+                  className="motion-button rounded-md px-2 py-1.5 text-xs text-muted-foreground transition-[color,background-color,transform] duration-500 ease-out hover:text-foreground sm:px-3 sm:text-sm"
                   activeProps={{ className: "bg-secondary text-foreground" }}
                 >
                   {link.label}
@@ -74,6 +75,15 @@ export function SiteNav() {
               </li>
             ))}
           </ul>
+          <button
+            type="button"
+            onClick={onOpenCommand}
+            aria-label="Open command palette"
+            title="Open command palette (Command or Control + K)"
+            className="motion-button rounded-md p-2 text-muted-foreground transition-[color,background-color,transform] duration-500 ease-out hover:bg-secondary hover:text-foreground"
+          >
+            <Search className="size-4" />
+          </button>
           <ThemeToggle />
         </div>
       </nav>
@@ -82,9 +92,12 @@ export function SiteNav() {
 }
 
 export function PageShell({ children }: { children: React.ReactNode }) {
+  const [commandOpen, setCommandOpen] = useState(false);
+
   return (
     <div className="min-h-screen">
-      <SiteNav />
+      <SiteNav onOpenCommand={() => setCommandOpen(true)} />
+      <CommandPalette open={commandOpen} onOpenChange={setCommandOpen} />
       <main className="page-enter mx-auto max-w-3xl px-6 py-16 sm:py-24">{children}</main>
       <footer className="mx-auto max-w-3xl px-6 pb-12">
         <p className="label-mono">© {new Date().getFullYear()} Steven Wu</p>

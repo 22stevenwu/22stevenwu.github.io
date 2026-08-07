@@ -28,7 +28,7 @@ function Experience() {
       <p className="label-mono">Experience</p>
       <h1 className="mt-5 text-3xl font-semibold sm:text-4xl">Work & projects</h1>
       <p className="mt-4 max-w-2xl text-muted-foreground">
-        A running timeline of the roles I've held, the products/projects I've helped build.
+        A running timeline of the roles I've held and the products/projects I've helped build.
       </p>
 
       <div className="mt-12 space-y-12">
