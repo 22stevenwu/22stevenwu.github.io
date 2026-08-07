@@ -4,12 +4,13 @@ import {
   ArrowUpRight,
   BriefcaseBusiness,
   Building2,
+  Dribbble,
   Dumbbell,
+  FlagTriangleRight,
   GraduationCap,
   Headphones,
   MapPin,
   Plane,
-  Trophy,
   Utensils,
 } from "lucide-react";
 import { PageShell } from "@/components/site-nav";
@@ -266,9 +267,9 @@ export function ProjectsSection({ items }: { items: ProjectEntry[] }) {
 
 function About() {
   const interests = [
-    { label: "Golf", icon: Trophy },
+    { label: "Golf", icon: FlagTriangleRight },
     { label: "Fitness", icon: Dumbbell },
-    { label: "Basketball", icon: Trophy },
+    { label: "Basketball", icon: Dribbble },
     { label: "Music", icon: Headphones },
     { label: "Food", icon: Utensils },
     { label: "Travel", icon: Plane },
@@ -358,7 +359,7 @@ function About() {
               key={label}
               className="flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm text-secondary-foreground shadow-sm transition-[transform,border-color,background-color] duration-500 ease-out hover:-translate-y-0.5 hover:border-primary/50 hover:bg-secondary"
             >
-              <Icon className="size-3.5 text-primary" />
+              <Icon className="size-3.5 text-primary" aria-hidden="true" />
               {label}
             </span>
           ))}

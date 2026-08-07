@@ -27,6 +27,7 @@ export type TravelPhoto = {
 export type TravelDestination = {
   id: string;
   label: string;
+  country: string;
   coordinates: { lat: number; lng: number };
   pinOffset?: { x: number; y: number };
   photos: TravelPhoto[];
@@ -36,6 +37,7 @@ export const travelDestinations: TravelDestination[] = [
   {
     id: "california",
     label: "California",
+    country: "United States",
     coordinates: { lat: 36.78, lng: -119.42 },
     photos: [
       { place: "San Diego, California", src: cali },
@@ -46,6 +48,7 @@ export const travelDestinations: TravelDestination[] = [
   {
     id: "new-york-city",
     label: "New York City",
+    country: "United States",
     coordinates: { lat: 40.71, lng: -74.01 },
     pinOffset: { x: 4, y: -4 },
     photos: [
@@ -56,6 +59,7 @@ export const travelDestinations: TravelDestination[] = [
   {
     id: "canada",
     label: "Canada",
+    country: "Canada",
     coordinates: { lat: 46.8121, lng: -71.2061 },
     pinOffset: { x: 22, y: -20 },
     photos: [
@@ -70,6 +74,7 @@ export const travelDestinations: TravelDestination[] = [
   {
     id: "dominican-republic",
     label: "Dominican Republic",
+    country: "Dominican Republic",
     coordinates: { lat: 18.74, lng: -70.16 },
     photos: [
       { place: "Punta Cana, Dominican Republic", src: punta },
@@ -79,6 +84,7 @@ export const travelDestinations: TravelDestination[] = [
   {
     id: "vietnam",
     label: "Vietnam",
+    country: "Vietnam",
     coordinates: { lat: 14.06, lng: 108.28 },
     photos: [
       { place: "Ho Chi Minh City, Vietnam", src: hochiminh },
@@ -88,6 +94,7 @@ export const travelDestinations: TravelDestination[] = [
   {
     id: "south-korea",
     label: "South Korea",
+    country: "South Korea",
     coordinates: { lat: 35.91, lng: 127.77 },
     pinOffset: { x: -4, y: -5 },
     photos: [
@@ -99,6 +106,7 @@ export const travelDestinations: TravelDestination[] = [
   {
     id: "japan",
     label: "Japan",
+    country: "Japan",
     coordinates: { lat: 36.2, lng: 138.25 },
     pinOffset: { x: 8, y: -5 },
     photos: [
@@ -110,6 +118,7 @@ export const travelDestinations: TravelDestination[] = [
   {
     id: "taiwan",
     label: "Taiwan",
+    country: "Taiwan",
     coordinates: { lat: 23.7, lng: 120.96 },
     pinOffset: { x: -2, y: 8 },
     photos: [
