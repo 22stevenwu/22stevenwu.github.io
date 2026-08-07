@@ -16,7 +16,7 @@ import { PageShell } from "@/components/site-nav";
 import { Reveal } from "@/components/motion";
 import { TravelMap } from "@/components/travel-map";
 import type { ExperienceEntry, ProjectEntry } from "@/data/timeline";
-import { travelDestinations } from "@/data/travel";
+import { travelDestinations, travelWishlist } from "@/data/travel";
 import headshot from "@/assets/steven_headshot.png";
 
 export const Route = createFileRoute("/about")({
@@ -378,6 +378,31 @@ function About() {
           </p>
         </div>
         <TravelMap destinations={travelDestinations} />
+
+        <div className="mt-4 grid gap-4 rounded-xl border border-dashed border-primary/35 bg-primary/5 p-4 sm:grid-cols-[auto_1fr] sm:items-center sm:px-5">
+          <span className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+            <Plane className="size-4" aria-hidden="true" />
+          </span>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-sm font-medium text-foreground">Next on my list</p>
+              <p className="mt-0.5 text-xs text-muted-foreground">
+                Where I'd love to travel next!
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {travelWishlist.map((place) => (
+                <span
+                  key={place}
+                  className="flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs text-secondary-foreground shadow-sm transition-[transform,border-color] duration-300 hover:-translate-y-0.5 hover:border-primary/50"
+                >
+                  <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" />
+                  {place}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
       </Reveal>
 

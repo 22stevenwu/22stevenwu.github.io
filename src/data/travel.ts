@@ -1,4 +1,5 @@
 import cali from "@/assets/travel/cali.jpg";
+import canada from "@/assets/travel/canada.jpeg";
 import coex from "@/assets/travel/coex.png";
 import hotram from "@/assets/travel/meliahotram.png";
 import gangnam from "@/assets/travel/gangnam.png";
@@ -11,6 +12,7 @@ import osaka from "@/assets/travel/osaka.jpg";
 import pier from "@/assets/travel/pier.png";
 import punta from "@/assets/travel/punta.jpg";
 import sandiego from "@/assets/travel/sandiego.png";
+import santamonica from "@/assets/travel/santamonica.jpg";
 import seoul from "@/assets/travel/seoul.jpg";
 import taipei101 from "@/assets/travel/taipei101.png";
 import taiwan from "@/assets/travel/taiwan.jpg";
@@ -18,6 +20,8 @@ import taiwan from "@/assets/travel/taiwan.jpg";
 export type TravelPhoto = {
   place: string;
   src: string;
+  fit?: "cover" | "contain" | "fill" | "none" | "scale-down";
+  position?: string;
 };
 
 export type TravelDestination = {
@@ -36,6 +40,7 @@ export const travelDestinations: TravelDestination[] = [
     photos: [
       { place: "San Diego, California", src: cali },
       { place: "La Jolla, San Diego", src: sandiego },
+      { place: "Santa Monica Pier, California", src: santamonica },
     ],
   },
   {
@@ -46,6 +51,20 @@ export const travelDestinations: TravelDestination[] = [
     photos: [
       { place: "Statue of Liberty, New York", src: liberty },
       { place: "New York City waterfront", src: pier },
+    ],
+  },
+  {
+    id: "canada",
+    label: "Canada",
+    coordinates: { lat: 46.8121, lng: -71.2061 },
+    pinOffset: { x: 22, y: -20 },
+    photos: [
+      {
+        place: "Édifice Gérard-D.-Levesque, Québec City",
+        src: canada,
+        fit: "cover",
+        position: "center 22%",
+      },
     ],
   },
   {
@@ -99,3 +118,5 @@ export const travelDestinations: TravelDestination[] = [
     ],
   },
 ];
+
+export const travelWishlist = ["Switzerland", "France", "Czech Republic"];

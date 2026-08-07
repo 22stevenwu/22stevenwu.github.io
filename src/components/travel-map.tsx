@@ -25,6 +25,7 @@ const spherePath = drawPath({ type: "Sphere" }) ?? undefined;
 const graticulePath = drawPath(geoGraticule10()) ?? undefined;
 
 const visitedCountryIds = new Set([
+  "124", // Canada
   "158", // Taiwan
   "214", // Dominican Republic
   "392", // Japan
@@ -158,20 +159,33 @@ export function TravelMap({ destinations }: { destinations: TravelDestination[] 
           aria-label={`${activeDestination.label} photos`}
         >
           <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
+            {activePhoto.fit === "contain" ? (
+              <img
+                key={`${activeDestination.id}-${activePhotoIndex}-backdrop`}
+                src={activePhoto.src}
+                alt=""
+                aria-hidden="true"
+                className="map-popup-backdrop absolute inset-0 h-full w-full scale-110 object-cover opacity-45 blur-xl"
+              />
+            ) : null}
             <img
               key={`${activeDestination.id}-${activePhotoIndex}`}
               src={activePhoto.src}
               alt={activePhoto.place}
               decoding="async"
-              className="map-popup-image h-full w-full object-cover"
+              style={{
+                objectFit: activePhoto.fit ?? "cover",
+                objectPosition: activePhoto.position ?? "center",
+              }}
+              className="map-popup-image relative z-[1] h-full w-full"
             />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/30" />
+            <div className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-t from-black/75 via-transparent to-black/30" />
 
             <button
               type="button"
               onClick={() => setActiveIndex(null)}
               aria-label="Close photo preview"
-              className="absolute right-2 top-2 flex size-8 items-center justify-center rounded-full bg-black/45 text-white/85 backdrop-blur transition-colors hover:bg-black/65 hover:text-white"
+              className="absolute right-2 top-2 z-30 flex size-8 items-center justify-center rounded-full bg-black/45 text-white/85 backdrop-blur transition-colors hover:bg-black/65 hover:text-white"
             >
               <X className="size-4" />
             </button>
@@ -182,7 +196,7 @@ export function TravelMap({ destinations }: { destinations: TravelDestination[] 
                   type="button"
                   onClick={() => shiftPhoto(-1)}
                   aria-label="Previous photo"
-                  className="absolute left-2 top-1/2 flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white/85 backdrop-blur transition-colors hover:bg-black/65 hover:text-white"
+                  className="absolute left-2 top-1/2 z-30 flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white/85 backdrop-blur transition-colors hover:bg-black/65 hover:text-white"
                 >
                   <ChevronLeft className="size-5" />
                 </button>
@@ -190,14 +204,14 @@ export function TravelMap({ destinations }: { destinations: TravelDestination[] 
                   type="button"
                   onClick={() => shiftPhoto(1)}
                   aria-label="Next photo"
-                  className="absolute right-2 top-1/2 flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white/85 backdrop-blur transition-colors hover:bg-black/65 hover:text-white"
+                  className="absolute right-2 top-1/2 z-30 flex size-8 -translate-y-1/2 items-center justify-center rounded-full bg-black/45 text-white/85 backdrop-blur transition-colors hover:bg-black/65 hover:text-white"
                 >
                   <ChevronRight className="size-5" />
                 </button>
               </>
             ) : null}
 
-            <div className="absolute inset-x-3 bottom-3 flex items-end justify-between gap-3 text-white">
+            <div className="absolute inset-x-3 bottom-3 z-20 flex items-end justify-between gap-3 text-white">
               <p className="text-sm font-medium leading-snug">{activePhoto.place}</p>
               <p className="shrink-0 font-mono text-[0.62rem] text-white/75">
                 {activePhotoIndex + 1}/{activeDestination.photos.length}
@@ -205,7 +219,7 @@ export function TravelMap({ destinations }: { destinations: TravelDestination[] 
             </div>
           </div>
 
-          <div className="flex items-center justify-between gap-3 px-3 py-2.5">
+          <div className="relative z-10 flex items-center justify-between gap-3 px-3 py-2.5">
             <p className="flex min-w-0 items-center gap-2 text-sm font-medium text-foreground">
               <MapPin className="size-4 shrink-0 text-primary" aria-hidden="true" />
               <span className="truncate">{activeDestination.label}</span>

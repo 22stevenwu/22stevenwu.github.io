@@ -237,7 +237,7 @@ html.dark {
 .map-photo-popup::after {
   content: "";
   position: absolute;
-  z-index: 20;
+  z-index: 2;
   inset: -55%;
   pointer-events: none;
   background: linear-gradient(105deg, transparent 42%, rgb(255 255 255 / 0.22) 50%, transparent 58%);
