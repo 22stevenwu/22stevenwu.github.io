@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/site-nav";
+import { Reveal } from "@/components/motion";
 import { experience, projects } from "@/data/timeline";
 import { ExperienceSection, ProjectsSection } from "@/routes/about";
 
@@ -31,8 +32,12 @@ function Experience() {
       </p>
 
       <div className="mt-12 space-y-12">
-        <ExperienceSection items={experience} />
-        <ProjectsSection items={projects} />
+        <Reveal delay={100}>
+          <ExperienceSection items={experience} />
+        </Reveal>
+        <Reveal delay={100}>
+          <ProjectsSection items={projects} />
+        </Reveal>
       </div>
     </PageShell>
   );

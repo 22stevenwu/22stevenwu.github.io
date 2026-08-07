@@ -10,16 +10,24 @@ const links = [
 ] as const;
 
 function ThemeToggle() {
-  // Matches the default the inline theme-init script applies before hydration,
-  // so the icon doesn't flip on mount for the common (dark) case.
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState<boolean | null>(null);
 
   useEffect(() => {
-    setIsDark(document.documentElement.classList.contains("dark"));
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+    const syncTheme = () => {
+      const savedTheme = localStorage.getItem("theme");
+      const nextIsDark = savedTheme ? savedTheme === "dark" : systemTheme.matches;
+      document.documentElement.classList.toggle("dark", nextIsDark);
+      setIsDark(nextIsDark);
+    };
+
+    syncTheme();
+    systemTheme.addEventListener("change", syncTheme);
+    return () => systemTheme.removeEventListener("change", syncTheme);
   }, []);
 
   const toggle = () => {
-    const next = !isDark;
+    const next = !document.documentElement.classList.contains("dark");
     document.documentElement.classList.toggle("dark", next);
     localStorage.setItem("theme", next ? "dark" : "light");
     setIsDark(next);
@@ -29,10 +37,17 @@ function ThemeToggle() {
     <button
       type="button"
       onClick={toggle}
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      aria-label={
+        isDark === null
+          ? "Toggle color theme"
+          : isDark
+            ? "Switch to light mode"
+            : "Switch to dark mode"
+      }
       className="motion-button rounded-md p-2 text-muted-foreground transition-[color,background-color,transform] duration-500 ease-out hover:bg-secondary hover:text-foreground"
     >
-      {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
+      <Sun className="hidden size-4 dark:block" />
+      <Moon className="size-4 dark:hidden" />
     </button>
   );
 }

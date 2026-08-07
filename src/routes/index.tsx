@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Typewriter } from "@/components/motion";
 import { PageShell } from "@/components/site-nav";
 
 export const Route = createFileRoute("/")({
@@ -24,26 +25,29 @@ function Home() {
   return (
     <PageShell>
       <section>
-        <p className="label-mono">Portfolio</p>
-        <h1 className="mt-5 text-4xl font-semibold sm:text-6xl">Steven Wu</h1>
-        <p className="mt-3 font-mono text-base text-primary sm:text-lg">
-          Software Engineer I @ Sunfire
+        <p className="stagger-in label-mono">Portfolio</p>
+        <h1 className="stagger-in mt-5 text-4xl font-semibold sm:text-6xl [animation-delay:100ms]">
+          Steven Wu
+        </h1>
+        <p className="stagger-in mt-3 min-h-7 font-mono text-base text-primary sm:text-lg [animation-delay:200ms]">
+          <Typewriter value="Software Engineer I @ Sunfire" />
         </p>
 
-        <div className="mt-10 card-panel space-y-4 p-6 sm:p-8">
+        <div className="stagger-in mt-10 card-panel space-y-4 p-6 sm:p-8 [animation-delay:350ms]">
           <p className="text-base leading-relaxed text-muted-foreground">
             Software engineer from the NYC Metropolitan area with experience in
             full-stack development, QA, and data analysis. I'm a recent graduate from Boston College's 
             Morrissey College of Arts and Sciences, with a B.A in Computer Science and minors in Finance and Data Science.
+            I currently work as a Software Engineer I on the Internal Platform team at Sunfire.
             
           </p>
           <p className="text-base leading-relaxed text-muted-foreground">
-            I currently work as a Software Engineer I at Sunfire, a health technology company that delivers digital 
-            solutions to streamline Medicare plan quoting and enrollment for agents and consumers.
+            I enjoy solving problems across the full stack and making meaningful contributions to the products and teams I work with.
+            Learn more about me, my past work and project experience, or reach out to me via email, LinkedIn, or GitHub.
           </p>
         </div>
 
-        <div className="mt-10 flex flex-wrap gap-3">
+        <div className="stagger-in mt-10 flex flex-wrap gap-3 [animation-delay:500ms]">
           <Link
             to="/experience"
             className="motion-button rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity duration-500 ease-out hover:opacity-90"

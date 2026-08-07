@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { Mail, Github, Linkedin, FileText } from "lucide-react";
-import { Button } from "./ui/button";
 
 const Contact = () => {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -62,28 +61,41 @@ const Contact = () => {
           I'm always eager to share more about my experiences or learn more about yours!
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button variant="default" size="lg" asChild>
-            <a href="mailto:wuaye@bc.edu" className="flex items-center gap-2">
-              <Mail className="h-4 w-4" />
-              Email Me
-            </a>
-          </Button>
+          <a
+            href="mailto:wuaye@bc.edu"
+            className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            <Mail className="h-4 w-4" />
+            Email Me
+          </a>
           <div className="flex gap-4">
-            <Button variant="outline" size="icon" asChild>
-              <a href="https://github.com/22stevenwu" target="_blank" rel="noopener noreferrer">
-                <Github className="h-5 w-5" />
-              </a>
-            </Button>
-            <Button variant="outline" size="icon" asChild>
-              <a href="https://www.linkedin.com/in/stevenwu-/" target="_blank" rel="noopener noreferrer">
-                <Linkedin className="h-5 w-5" />
-              </a>
-            </Button>
-            <Button variant="outline" size="icon" asChild>
-              <a href="https://drive.google.com/file/d/1OnoY7UYerBEjsOr8SX4oF0W72tgtrwPF/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                <FileText className="h-5 w-5" />
-              </a>
-            </Button>
+            <a
+              href="https://github.com/22stevenwu"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="inline-flex size-11 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:bg-secondary"
+            >
+              <Github className="h-5 w-5" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/stevenwu-/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="inline-flex size-11 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:bg-secondary"
+            >
+              <Linkedin className="h-5 w-5" />
+            </a>
+            <a
+              href="https://drive.google.com/file/d/1OnoY7UYerBEjsOr8SX4oF0W72tgtrwPF/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Resume"
+              className="inline-flex size-11 items-center justify-center rounded-md border border-border text-foreground transition-colors hover:bg-secondary"
+            >
+              <FileText className="h-5 w-5" />
+            </a>
           </div>
         </div>
       {footerMounted && (

@@ -16,6 +16,7 @@ import {
   X,
 } from "lucide-react";
 import { PageShell } from "@/components/site-nav";
+import { Reveal } from "@/components/motion";
 import type { ExperienceEntry, ProjectEntry } from "@/data/timeline";
 import { travelPhotos, type TravelPhoto } from "@/data/travel";
 import headshot from "@/assets/steven_headshot.png";
@@ -47,7 +48,7 @@ function TabButton({
   isActive: boolean;
   onClick: () => void;
   title: string;
-  period: string;
+  period?: string;
 }) {
   return (
     <button
@@ -65,7 +66,9 @@ function TabButton({
         }`}
       />
       <span className="block whitespace-nowrap font-medium sm:whitespace-normal">{title}</span>
-      <span className="label-mono mt-1 block whitespace-nowrap">{period}</span>
+      {period ? (
+        <span className="label-mono mt-1 block whitespace-nowrap">{period}</span>
+      ) : null}
     </button>
   );
 }
@@ -448,6 +451,7 @@ function About() {
         Software engineer, lifelong learner, and always planning the next place to explore.
       </p>
 
+      <Reveal delay={100}>
       <section className="about-profile mt-10 card-panel overflow-hidden">
         <div className="grid md:grid-cols-[minmax(0,0.78fr)_minmax(0,1.35fr)]">
           <div className="relative min-h-80 overflow-hidden bg-secondary md:min-h-full">
@@ -501,16 +505,18 @@ function About() {
           </div>
         </div>
       </section>
+      </Reveal>
 
+      <Reveal delay={100}>
       <section className="mt-14">
         <p className="label-mono">Beyond the desk</p>
         <div className="mt-4 grid gap-6 md:grid-cols-[1fr_auto] md:items-end">
           <div>
             <h2 className="text-2xl font-semibold sm:text-3xl">What keeps me moving</h2>
             <p className="mt-3 max-w-2xl leading-relaxed text-muted-foreground">
-              Away from work, you&apos;ll usually find me on the golf course, in the gym, or
-              playing and watching basketball—go Knicks. I&apos;m also into music of all kinds,
-              trying new food, and traveling whenever I get the chance.
+              Away from work, you'll usually find me on the golf course, in the gym, or on the basketball court.
+              I'm a lifelong Knicks fan and love both playing and watching basketball. Outside of sports, I'm enjoy 
+              discovering new music, trying new foods, and traveling whenever I get the chance.
             </p>
           </div>
         </div>
@@ -527,19 +533,22 @@ function About() {
           ))}
         </div>
       </section>
+      </Reveal>
 
-      <section className="mt-14 card-panel p-5 sm:p-7">
+      <Reveal delay={100}>
+      <section className="mt-6 card-panel p-5 sm:p-7">
         <div className="mb-6 flex items-end justify-between gap-4">
           <div>
             <p className="label-mono">Postcards</p>
             <h2 className="mt-2 text-2xl font-semibold sm:text-3xl">A few places I&apos;ve been</h2>
           </div>
-          <p className="hidden max-w-52 text-right text-sm text-muted-foreground sm:block">
+          <p className="hidden max-w-100 text-right text-sm text-muted-foreground sm:block">
             Select a photo to take a closer look.
           </p>
         </div>
         <TravelGallery photos={travelPhotos} />
       </section>
+      </Reveal>
 
     </PageShell>
   );

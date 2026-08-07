@@ -9,6 +9,11 @@ const contacts = [
     href: "https://www.linkedin.com/in/stevenwu-/",
   },
   { label: "GitHub", value: "github.com/22stevenwu", href: "https://github.com/22stevenwu" },
+  {
+    label: "Resume",
+    value: "View my resume",
+    href: "https://docs.google.com/document/d/1ZwI7eCSOFQ19L0l3GwacBOSb9iuUIRXM/edit?usp=sharing&ouid=118055764107557939230&rtpof=true&sd=true",
+  },
 ];
 
 export const Route = createFileRoute("/contact")({
@@ -37,8 +42,12 @@ function Contact() {
       </p>
 
       <ul className="mt-12 space-y-3">
-        {contacts.map((c) => (
-          <li key={c.label}>
+        {contacts.map((c, index) => (
+          <li
+            key={c.label}
+            className="stagger-in"
+            style={{ animationDelay: `${200 + index * 130}ms` }}
+          >
             <a
               href={c.href}
               target={c.href.startsWith("http") ? "_blank" : undefined}
